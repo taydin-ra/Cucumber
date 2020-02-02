@@ -15,6 +15,7 @@ public class Driver {
 
     public static WebDriver getDriver() {
         if (driver == null) {
+          //  System.setProperty("webdriver.chrome.driver", "/Users/yavuzaydin/Documents/Libraries/drivers/chromedriver");
             ChromeDriverManager.chromedriver().setup();
             driver = new ChromeDriver(  );
 

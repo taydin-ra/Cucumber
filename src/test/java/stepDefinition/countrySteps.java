@@ -1,8 +1,8 @@
 package stepDefinition;
 
-import PageObjectModel.leftNav;
-import PageObjectModel.signInPage;
+import PageObjectModel.*;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -10,14 +10,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import utilities.Driver;
+import utilities.ReadPropertiesFile;
 
 import java.util.concurrent.TimeUnit;
 
-public class countrySteps {
+public class countrySteps extends AbstractClass {
 
     WebDriver driver;
     signInPage sip = new signInPage();
-    leftNav ln=new leftNav();
+    leftNav ln = new leftNav();
+    countryPage cp = new countryPage();
+    applicationPage ap= new applicationPage();
 
     @Given("^Go to mersys website$")
     public void go_to_mersys_website() throws Throwable {
@@ -25,7 +28,9 @@ public class countrySteps {
 
         driver = Driver.getDriver();
         driver.manage().window().maximize();
-        driver.get("https://test-basqar.mersys.io");
+
+        driver.get(ReadPropertiesFile.getData("URL"));
+
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
@@ -36,6 +41,7 @@ public class countrySteps {
         sip.typeIninputPassword();
         sip.clickOnbuttonLogin();
     }
+
     @Given("^Click on setup on top$")
     public void click_on_setup_on_top() throws Throwable {
         ln.clickOndropDownSetup();
@@ -54,9 +60,32 @@ public class countrySteps {
 
     }
 
+    @Given("^Click on plus icon$")
+    public void click_on_plus_icon() throws Throwable {
+        ap.clickPlusButton();
 
+    }
 
+    @Given("^Type in the Name \"([^\"]*)\"$")
+    public void type_in_the_Name(String name) throws Throwable {
+        cp.typeCountryName(name);
 
+    }
+
+    @Given("^Type in the code \"([^\"]*)\"$")
+    public void type_in_the_code(String code) throws Throwable {
+        cp.typeCountryCode(code);
+    }
+
+    @Given("^Click on save button$")
+    public void click_on_save_button() throws Throwable {
+        ap.clickSaveButton();
+    }
+
+    @Then("^\"([^\"]*)\" should be displayed$")
+    public void should_be_displayed(String arg1) throws Throwable {
+
+    }
 
 
 }

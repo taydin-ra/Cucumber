@@ -11,5 +11,8 @@ Feature: Create Citizenship
     And Type the shortName "Ctzn"
     When Click on save button
     Then "Citizen" should be displayed
+    Then Remove the data "Citizen"
+    Then Verify data is removed "Citizen"
+
 
 
