@@ -1,4 +1,5 @@
 Feature: Create a Nationality
+  @SmokeTest
   Scenario:  Nationality Creating
 
     Given Go to mersys website

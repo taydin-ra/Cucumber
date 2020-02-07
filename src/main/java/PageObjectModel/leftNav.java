@@ -36,6 +36,17 @@ public class leftNav extends AbstractClass {
 
     @FindBy (xpath = "//span[contains(text(), 'Cities')]")
     private WebElement buttonCities;
+    @FindBy(xpath="//span[text()='Discounts']")
+
+    private WebElement discounts;
+
+
+
+
+    public void clickOnDiscounts(){
+        clickFunction(discounts);
+
+    }
 
     public void clickOndropDownSetup() {
         dropdownSetup.click();

@@ -8,6 +8,7 @@ import org.testng.Assert;
 import utilities.Driver;
 
 import java.util.List;
+import java.util.Random;
 
 public abstract class AbstractClass {
 /*
@@ -90,7 +91,8 @@ abstract class create
 
     }
 
-    public void verifyDeletedAbstractClass(List<WebElement> tableList, String value ){
+    public void verifyDeletedAbstractClass(List<WebElement> tableList, String value ) throws InterruptedException {
+        Thread.sleep(2000);
         boolean result = false;
         for(int i =0; i<tableList.size() ; i++){
             if(tableList.get( i ).getText().trim().equalsIgnoreCase( value )){
@@ -103,6 +105,23 @@ abstract class create
         }else{
             System.out.println(value + " is not displayed");
         }
+    }
+
+
+    public void handleDropdown(WebElement dropdown , List<WebElement> dropdownOptions){
+
+        clickFunction( dropdown );
+        int randomNum = randomGenerator( dropdownOptions.size() );
+        clickFunction(dropdownOptions.get( randomNum ));
+
+    }
+
+    // random number creator
+    public int randomGenerator(int max){
+
+        Random random = new Random();
+        int randomNum = random.nextInt(max);
+        return randomNum;
     }
 
 // create a delete function

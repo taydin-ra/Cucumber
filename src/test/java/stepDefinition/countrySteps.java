@@ -84,6 +84,7 @@ public class countrySteps extends AbstractClass {
 
     @Then("^\"([^\"]*)\" should be displayed$")
     public void should_be_displayed(String arg1) throws Throwable {
+        ap.nameIsCreated(arg1);
 
     }
 

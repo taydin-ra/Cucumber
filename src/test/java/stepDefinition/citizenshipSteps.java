@@ -37,6 +37,7 @@ public class citizenshipSteps extends AbstractClass {
 
     @Then("^Verify data is removed \"([^\"]*)\"$")
     public void verify_data_is_removed(String arg1) throws Throwable {
+        ap.verifingDeleted(arg1);
 
     }
 
